@@ -1,0 +1,72 @@
+[gd_scene load_steps=13 format=3 uid="uid://c1bffkg4xn8t7"]
+
+[ext_resource type="Texture2D" uid="uid://btjfqtbh5hyfq" path="res://art/office/white.png" id="2_n5nqx"]
+[ext_resource type="Texture2D" uid="uid://b5412c8ods55o" path="res://art/office/Chair.png" id="3_hp5ct"]
+[ext_resource type="Texture2D" uid="uid://ct6joxc4cr0k5" path="res://art/candidates/Bear.png" id="4_nn4s1"]
+[ext_resource type="Texture2D" uid="uid://cxh5w05nk0ys" path="res://art/candidates/Bunny.png" id="5_fd1i0"]
+[ext_resource type="Texture2D" uid="uid://clb3leg6afxps" path="res://art/candidates/Cat.png" id="6_12kot"]
+[ext_resource type="Texture2D" uid="uid://bajjbgqjf30sm" path="res://art/candidates/Dog.png" id="7_8huc7"]
+[ext_resource type="Texture2D" uid="uid://5g4ntk7i7krg" path="res://art/candidates/Fox.png" id="8_mdx8y"]
+[ext_resource type="Texture2D" uid="uid://dhngqohf0rqq7" path="res://art/candidates/Tiger.png" id="9_x152s"]
+[ext_resource type="Texture2D" uid="uid://ceaals06sfsub" path="res://art/candidates/Unicorn.png" id="10_o2ccx"]
+[ext_resource type="Texture2D" uid="uid://b1paljeid8pl2" path="res://art/office/Table.png" id="11_xpg6y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oseuf"]
+atlas = ExtResource("4_nn4s1")
+region = Rect2(0, 0, 2732, 2048)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gtohr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_8huc7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_o2ccx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oseuf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_12kot")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_mdx8y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_x152s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_fd1i0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Candidate" type="Node2D"]
+
+[node name="White" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.278431)
+position = Vector2(684, 547)
+scale = Vector2(0.538574, 0.538574)
+texture = ExtResource("2_n5nqx")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(3, 117)
+
+[node name="Chair" type="Sprite2D" parent="Node2D"]
+position = Vector2(709, 320)
+scale = Vector2(0.85, 0.85)
+texture = ExtResource("3_hp5ct")
+
+[node name="Animal" type="AnimatedSprite2D" parent="Node2D"]
+position = Vector2(679, 616)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_gtohr")
+speed_scale = 0.0
+
+[node name="Table" type="Sprite2D" parent="Node2D"]
+position = Vector2(690, 540)
+scale = Vector2(0.53418, 0.53418)
+texture = ExtResource("11_xpg6y")
