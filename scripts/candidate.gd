@@ -29,6 +29,7 @@ func start_next():
 		conversation.reset()
 		decide.reset(candidate)
 		await get_tree().create_timer(text_delay).timeout
+		conversation.init(candidate)
 		conversation.start()
 		current += 1
 	else:

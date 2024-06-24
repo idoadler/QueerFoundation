@@ -8,5 +8,5 @@ script = ExtResource("2_yiann")
 costumer = "Whiskers"
 frame = 3
 first_conversation = ExtResource("1_tykah")
-project = "Water Fountain"
-required_funds = 18000
+project = "Bubble Wrap"
+required_funds = 6000

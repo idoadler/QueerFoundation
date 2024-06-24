@@ -21,6 +21,7 @@ texture = ExtResource("1_ajm7o")
 visible = false
 
 [node name="Screen" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(690, 691)
 scale = Vector2(0.49396, 0.467773)
 texture = ExtResource("3_3tp0y")

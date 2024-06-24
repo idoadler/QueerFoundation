@@ -33,7 +33,6 @@ func start():
 	
 func reset():
 	hide()
-	# TODO: SET CANDIDATE FRAME
 	decision.visible = false
 	for i in question_labels.size():
 		question_labels[i].visible = false
@@ -59,7 +58,6 @@ func activate():
 			question_labels[i].visible = false
 
 func set_response(response):
-	decision.visible = false
 	for i in question_labels.size():
 		question_labels[i].visible = false
 	answer_label.visible = true

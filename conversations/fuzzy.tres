@@ -8,5 +8,5 @@ script = ExtResource("2_1k36y")
 costumer = "Fuzzy"
 frame = 2
 first_conversation = ExtResource("1_djgr3")
-project = "Water Fountain"
-required_funds = 20000
+project = "Inclusive Caffe"
+required_funds = 25000

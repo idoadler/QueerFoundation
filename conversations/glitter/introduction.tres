@@ -4,7 +4,6 @@
 
 [resource]
 script = ExtResource("1_r5pui")
-questions = Array[String](["How do you identify?", "Are you queer?"])
-answers = Array[String](["Wiggles: Please use It/Its", "Wiggles: Actually, I'm very confused about this identity thing
-I guess, I..., don't really know?..."])
+questions = Array[String](["How do you identify?"])
+answers = Array[String](["I’m non-binary and queer, using they/them pronouns. I’m also pansexual and proud of it!"])
 goto = Array[ExtResource("1_r5pui")]([])
