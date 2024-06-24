@@ -1,0 +1,213 @@
+[gd_scene load_steps=9 format=3 uid="uid://bh2u64oii8bb2"]
+
+[ext_resource type="Texture2D" uid="uid://60dv30o4l4qq" path="res://art/office/Office bg.png" id="1_v8sv5"]
+[ext_resource type="Texture2D" uid="uid://btjfqtbh5hyfq" path="res://art/office/white.png" id="2_k0lfo"]
+[ext_resource type="FontFile" uid="uid://cdh2w25ey4dgi" path="res://fonts/Pacifico-Regular.ttf" id="3_4yjmk"]
+[ext_resource type="FontFile" uid="uid://bfh134b1odp46" path="res://fonts/Anton-Regular.ttf" id="4_1vu8f"]
+[ext_resource type="Texture2D" uid="uid://chc1revf33n68" path="res://art/logos/GWJ-Full-Logo-noBG-4k.png" id="4_l0lky"]
+[ext_resource type="Texture2D" uid="uid://8301hvkb8fho" path="res://art/logos/Mini-jam-Support.png" id="5_14n18"]
+[ext_resource type="Texture2D" uid="uid://bselqxcjiug4p" path="res://art/logos/ido_flag.png" id="6_hq0e0"]
+[ext_resource type="FontFile" uid="uid://obmtho1mur1j" path="res://fonts/PlaywriteAUVIC-Regular.ttf" id="7_pwvq7"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="OfficeBg" type="Sprite2D" parent="."]
+position = Vector2(683, 579)
+scale = Vector2(0.565918, 0.565918)
+texture = ExtResource("1_v8sv5")
+
+[node name="OfficeBg2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.231373)
+position = Vector2(666, 542)
+scale = Vector2(0.565918, 0.565918)
+texture = ExtResource("2_k0lfo")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 499.0
+offset_top = 161.0
+offset_right = 927.0
+offset_bottom = 482.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_4yjmk")
+theme_override_font_sizes/font_size = 90
+text = "Queer
+"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 499.0
+offset_top = 96.0
+offset_right = 927.0
+offset_bottom = 417.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_4yjmk")
+theme_override_font_sizes/font_size = 90
+text = "
+Foundation"
+horizontal_alignment = 1
+
+[node name="Button3" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 524.0
+offset_top = 467.0
+offset_right = 903.0
+offset_bottom = 725.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_1vu8f")
+theme_override_font_sizes/font_size = 60
+text = "Start
+Supporting!"
+
+[node name="JamLogo" type="Node2D" parent="."]
+visible = false
+position = Vector2(185, 769)
+scale = Vector2(0.6, 0.6)
+
+[node name="Button" type="Button" parent="JamLogo"]
+modulate = Color(1, 1, 1, 0.117647)
+offset_left = -270.0
+offset_top = -219.0
+offset_right = 282.0
+offset_bottom = 377.0
+
+[node name="up-left" type="Sprite2D" parent="JamLogo"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(2.27783, 4.87524)
+scale = Vector2(0.259889, 0.259889)
+texture = ExtResource("4_l0lky")
+
+[node name="up-right" type="Sprite2D" parent="JamLogo"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(3.77783, 4.87524)
+scale = Vector2(0.259889, 0.259889)
+texture = ExtResource("4_l0lky")
+
+[node name="down-right" type="Sprite2D" parent="JamLogo"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(2.49994, 7.5)
+scale = Vector2(0.259889, 0.259889)
+texture = ExtResource("4_l0lky")
+
+[node name="down-left" type="Sprite2D" parent="JamLogo"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(2.27783, 7.625)
+scale = Vector2(0.259889, 0.259889)
+texture = ExtResource("4_l0lky")
+
+[node name="Gwj-full-logo-noBg-4k3" type="Sprite2D" parent="JamLogo"]
+position = Vector2(3.0278, 5.62512)
+scale = Vector2(0.259889, 0.259889)
+texture = ExtResource("4_l0lky")
+
+[node name="Mini-jam-support" type="Sprite2D" parent="JamLogo"]
+position = Vector2(2.0278, 281.625)
+scale = Vector2(0.187013, 0.187013)
+texture = ExtResource("5_14n18")
+
+[node name="IdoLogo" type="Node2D" parent="."]
+visible = false
+position = Vector2(30, -45)
+
+[node name="Button2" type="Button" parent="IdoLogo"]
+modulate = Color(1, 1, 1, 0.117647)
+offset_left = 1002.0
+offset_top = 644.0
+offset_right = 1310.0
+offset_bottom = 1058.0
+
+[node name="IdoFlag" type="Sprite2D" parent="IdoLogo"]
+position = Vector2(1159, 806)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("6_hq0e0")
+
+[node name="Label2" type="Label" parent="IdoLogo"]
+offset_left = 941.0
+offset_top = 920.0
+offset_right = 1369.0
+offset_bottom = 1241.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_pwvq7")
+theme_override_font_sizes/font_size = 60
+text = "ido.wtf"
+horizontal_alignment = 1
+
+[node name="JamLogo2" type="Node2D" parent="."]
+position = Vector2(117, 87)
+scale = Vector2(0.3, 0.3)
+
+[node name="Button" type="Button" parent="JamLogo2"]
+modulate = Color(1, 1, 1, 0.117647)
+offset_left = -270.0
+offset_top = -219.0
+offset_right = 282.0
+offset_bottom = 377.0
+
+[node name="up-left" type="Sprite2D" parent="JamLogo2"]
+visible = false
+modulate = Color(0, 0, 0, 1)
+position = Vector2(2.27783, 4.87524)
+scale = Vector2(0.259889, 0.259889)
+texture = ExtResource("4_l0lky")
+
+[node name="up-right" type="Sprite2D" parent="JamLogo2"]
+visible = false
+modulate = Color(0, 0, 0, 1)
+position = Vector2(3.77783, 4.87524)
+scale = Vector2(0.259889, 0.259889)
+texture = ExtResource("4_l0lky")
+
+[node name="down-right" type="Sprite2D" parent="JamLogo2"]
+visible = false
+modulate = Color(0, 0, 0, 1)
+position = Vector2(2.49994, 7.5)
+scale = Vector2(0.259889, 0.259889)
+texture = ExtResource("4_l0lky")
+
+[node name="down-left" type="Sprite2D" parent="JamLogo2"]
+visible = false
+modulate = Color(0, 0, 0, 1)
+position = Vector2(2.27783, 7.625)
+scale = Vector2(0.259889, 0.259889)
+texture = ExtResource("4_l0lky")
+
+[node name="Gwj-full-logo-noBg-4k3" type="Sprite2D" parent="JamLogo2"]
+position = Vector2(3.0278, 5.62512)
+scale = Vector2(0.259889, 0.259889)
+texture = ExtResource("4_l0lky")
+
+[node name="Mini-jam-support" type="Sprite2D" parent="JamLogo2"]
+position = Vector2(2.0278, 281.625)
+scale = Vector2(0.187013, 0.187013)
+texture = ExtResource("5_14n18")
+
+[node name="IdoLogo2" type="Node2D" parent="."]
+position = Vector2(-463, -105)
+scale = Vector2(0.5, 0.5)
+
+[node name="Button2" type="Button" parent="IdoLogo2"]
+modulate = Color(1, 1, 1, 0.117647)
+offset_left = 1002.0
+offset_top = 644.0
+offset_right = 1332.0
+offset_bottom = 970.0
+
+[node name="IdoFlag" type="Sprite2D" parent="IdoLogo2"]
+position = Vector2(1172, 770)
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("6_hq0e0")
+
+[node name="Label2" type="Label" parent="IdoLogo2"]
+offset_left = 958.0
+offset_top = 846.0
+offset_right = 1386.0
+offset_bottom = 1167.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_pwvq7")
+theme_override_font_sizes/font_size = 60
+text = "ido.wtf"
+horizontal_alignment = 1
