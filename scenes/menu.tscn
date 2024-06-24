@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://btjfqtbh5hyfq" path="res://art/office/white.png" id="2_7tra3"]
 [ext_resource type="FontFile" uid="uid://cdh2w25ey4dgi" path="res://fonts/Pacifico-Regular.ttf" id="3_spsr5"]
 [ext_resource type="Script" path="res://scripts/open_url.gd" id="4_cle50"]
-[ext_resource type="Texture2D" uid="uid://chc1revf33n68" path="res://art/logos/GWJ-Full-Logo-noBG-4k.png" id="5_5qeji"]
+[ext_resource type="Texture2D" uid="uid://dc0n0rt57oq7n" path="res://art/logos/Itch-Pride-cover-5.webp" id="5_0xaet"]
 [ext_resource type="Texture2D" uid="uid://8301hvkb8fho" path="res://art/logos/Mini-jam-Support.png" id="6_6v8i3"]
 [ext_resource type="Texture2D" uid="uid://bselqxcjiug4p" path="res://art/logos/ido_flag.png" id="7_ucv88"]
 [ext_resource type="FontFile" uid="uid://obmtho1mur1j" path="res://fonts/PlaywriteAUVIC-Regular.ttf" id="8_vr8fa"]
@@ -15,6 +15,7 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0e6ej"]
 
 [node name="Node2D" type="Node2D"]
+position = Vector2(36, 0)
 
 [node name="OfficeBg" type="Sprite2D" parent="."]
 position = Vector2(683, 579)
@@ -52,11 +53,11 @@ Foundation"
 horizontal_alignment = 1
 
 [node name="JamLogo" type="Node2D" parent="."]
-position = Vector2(117, 87)
+position = Vector2(85, 107)
 scale = Vector2(0.3, 0.3)
 
 [node name="Button" type="Button" parent="JamLogo"]
-modulate = Color(1, 1, 1, 0.117647)
+modulate = Color(1, 1, 1, 0.196078)
 offset_left = -270.0
 offset_top = -219.0
 offset_right = 282.0
@@ -66,21 +67,21 @@ script = ExtResource("4_cle50")
 url = "https://itch.io/jam/wild-and-proud"
 
 [node name="Gwj-full-logo-noBg-4k3" type="Sprite2D" parent="JamLogo"]
-position = Vector2(3.0278, 5.62512)
-scale = Vector2(0.259889, 0.259889)
-texture = ExtResource("5_5qeji")
+position = Vector2(2.24018, 5.00002)
+scale = Vector2(0.793333, 0.793333)
+texture = ExtResource("5_0xaet")
 
 [node name="Mini-jam-support" type="Sprite2D" parent="JamLogo"]
-position = Vector2(2.0278, 281.625)
+position = Vector2(2.02783, 284.958)
 scale = Vector2(0.187013, 0.187013)
 texture = ExtResource("6_6v8i3")
 
 [node name="IdoLogo" type="Node2D" parent="."]
-position = Vector2(-463, -105)
+position = Vector2(-497, -85)
 scale = Vector2(0.5, 0.5)
 
 [node name="Button2" type="Button" parent="IdoLogo"]
-modulate = Color(1, 1, 1, 0.117647)
+modulate = Color(1, 1, 1, 0.196078)
 offset_left = 1002.0
 offset_top = 644.0
 offset_right = 1332.0

@@ -9,6 +9,7 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_44sh8"]
 
 [node name="Office" type="Node2D"]
+position = Vector2(36, 0)
 
 [node name="Office" type="Sprite2D" parent="."]
 position = Vector2(688.33, 541.25)
@@ -16,8 +17,13 @@ scale = Vector2(0.532959, 0.532959)
 texture = ExtResource("1_ajm7o")
 
 [node name="Candidate" parent="." instance=ExtResource("2_kjy25")]
+visible = false
+
+[node name="Animal" parent="Candidate/Node2D" index="1"]
+visible = false
 
 [node name="Screen" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(690, 691)
 scale = Vector2(0.49396, 0.467773)
 texture = ExtResource("3_3tp0y")
@@ -47,7 +53,6 @@ Foundation"
 horizontal_alignment = 1
 
 [node name="SkippableText" type="Control" parent="." node_paths=PackedStringArray("label", "button")]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_top = -60.0
@@ -92,15 +97,20 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_44sh8")
 text = "Next"
 
 [node name="TimerShowScreen" type="Timer" parent="."]
+wait_time = 0.3
 one_shot = true
 autostart = true
 
-[node name="TimerStartText" type="Timer" parent="."]
-wait_time = 1.6
+[node name="TimerStartText" type="Timer" parent="TimerShowScreen"]
+wait_time = 0.5
 one_shot = true
-autostart = true
 
 [node name="TimerCandidate" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="TimerConversation" type="Timer" parent="TimerCandidate"]
+wait_time = 0.6
 one_shot = true
 
 [connection signal="ready" from="Candidate" to="Candidate" method="hide"]
@@ -110,8 +120,11 @@ one_shot = true
 [connection signal="scroll_done" from="SkippableText" to="Screen" method="hide"]
 [connection signal="scroll_done" from="SkippableText" to="TimerCandidate" method="start"]
 [connection signal="scroll_done" from="SkippableText" to="Candidate/Node2D/Animal" method="set_frame" binds= [0]]
+[connection signal="timeout" from="TimerShowScreen" to="TimerShowScreen/TimerStartText" method="start"]
 [connection signal="timeout" from="TimerShowScreen" to="Screen" method="set_visible" binds= [true]]
-[connection signal="timeout" from="TimerStartText" to="SkippableText" method="activate"]
+[connection signal="timeout" from="TimerShowScreen/TimerStartText" to="SkippableText" method="activate"]
+[connection signal="timeout" from="TimerCandidate" to="TimerCandidate/TimerConversation" method="start"]
 [connection signal="timeout" from="TimerCandidate" to="Candidate/Node2D/Animal" method="set_visible" binds= [true]]
+[connection signal="timeout" from="TimerCandidate/TimerConversation" to="Candidate/Conversation" method="start"]
 
 [editable path="Candidate"]

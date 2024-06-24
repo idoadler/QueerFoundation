@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ConvRes" load_steps=3 format=3 uid="uid://dbcm6x8ysa1h7"]
+
+[ext_resource type="Resource" uid="uid://cdgahjntkilrr" path="res://conversations/wiggles/introduction_2.tres" id="1_gsdq4"]
+[ext_resource type="Script" path="res://conversations/conversation_res.gd" id="1_jm5bo"]
+
+[resource]
+script = ExtResource("1_jm5bo")
+questions = Array[String](["How can we help you, what do you need?", "Please tell me about your project?", "Hey there, please tell me a bit about yourself."])
+answers = Array[String](["Wiggles: I need approval from the city and 5000$ for materials", "Wiggles: I want to have add a fountain at the city hall", "Hey there, my name is Wiggles"])
+goto = Array[ExtResource("1_jm5bo")]([null, null, ExtResource("1_gsdq4")])

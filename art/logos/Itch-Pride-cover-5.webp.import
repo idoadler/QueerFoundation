@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djdpi3hmllumj"
-path="res://.godot/imported/Vvv.png-3a51f5b2343d4eaec66eb30c18946b4b.ctex"
+uid="uid://dc0n0rt57oq7n"
+path="res://.godot/imported/Itch-Pride-cover-5.webp-254db80da1073661cc17b58423a55e5f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/popups/Vvv.png"
-dest_files=["res://.godot/imported/Vvv.png-3a51f5b2343d4eaec66eb30c18946b4b.ctex"]
+source_file="res://art/logos/Itch-Pride-cover-5.webp"
+dest_files=["res://.godot/imported/Itch-Pride-cover-5.webp-254db80da1073661cc17b58423a55e5f.ctex"]
 
 [params]
 

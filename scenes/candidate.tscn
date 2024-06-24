@@ -1,5 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://c1bffkg4xn8t7"]
+[gd_scene load_steps=36 format=3 uid="uid://c1bffkg4xn8t7"]
 
+[ext_resource type="Texture2D" uid="uid://drxkrtb6f5vrc" path="res://art/office/Office.png" id="1_ymsdq"]
 [ext_resource type="Texture2D" uid="uid://btjfqtbh5hyfq" path="res://art/office/white.png" id="2_n5nqx"]
 [ext_resource type="Texture2D" uid="uid://b5412c8ods55o" path="res://art/office/Chair.png" id="3_hp5ct"]
 [ext_resource type="Texture2D" uid="uid://ct6joxc4cr0k5" path="res://art/candidates/Bear.png" id="4_nn4s1"]
@@ -10,6 +11,26 @@
 [ext_resource type="Texture2D" uid="uid://dhngqohf0rqq7" path="res://art/candidates/Tiger.png" id="9_x152s"]
 [ext_resource type="Texture2D" uid="uid://ceaals06sfsub" path="res://art/candidates/Unicorn.png" id="10_o2ccx"]
 [ext_resource type="Texture2D" uid="uid://b1paljeid8pl2" path="res://art/office/Table.png" id="11_xpg6y"]
+[ext_resource type="Texture2D" uid="uid://01oltalnm3iv" path="res://art/popups/Question1.png" id="12_4lspu"]
+[ext_resource type="Texture2D" uid="uid://b2477yat8l43s" path="res://art/popups/V1.png" id="13_ekrty"]
+[ext_resource type="Script" path="res://scripts/conversation.gd" id="13_g5q27"]
+[ext_resource type="Texture2D" uid="uid://y137xa0eesyv" path="res://art/popups/Question2.png" id="13_xwgis"]
+[ext_resource type="Texture2D" uid="uid://bhy6ypwydxnxr" path="res://art/popups/V2.png" id="14_p7a3t"]
+[ext_resource type="Texture2D" uid="uid://qe48tvlymery" path="res://art/popups/Question3.png" id="14_ufvm5"]
+[ext_resource type="Texture2D" uid="uid://dkgo47lmwnq6d" path="res://art/popups/Response.png" id="15_7m65f"]
+[ext_resource type="Texture2D" uid="uid://db8b6cs0ljghf" path="res://art/popups/V3.png" id="15_8yln6"]
+[ext_resource type="Script" path="res://scripts/labeled_image.gd" id="15_yc3l3"]
+[ext_resource type="Texture2D" uid="uid://c2dsroewpu6ac" path="res://art/popups/Decide.png" id="16_yqhbi"]
+[ext_resource type="Texture2D" uid="uid://6gt74w1ao31e" path="res://art/popups/x1.png" id="16_yswa6"]
+[ext_resource type="Texture2D" uid="uid://eu358pvxg3a8" path="res://art/popups/x2.png" id="17_re5d4"]
+[ext_resource type="Texture2D" uid="uid://pgw3ynaeckw5" path="res://art/popups/x3.png" id="18_dau62"]
+[ext_resource type="Texture2D" uid="uid://c1ytwlq3ac8jc" path="res://art/popups/Stamps.png" id="19_xjlh2"]
+[ext_resource type="Texture2D" uid="uid://lebn5760l68c" path="res://art/popups/Approved.png" id="20_afi4w"]
+[ext_resource type="Texture2D" uid="uid://dsqpp0tou6lya" path="res://art/popups/Denied.png" id="21_poyov"]
+[ext_resource type="Texture2D" uid="uid://wsf5rletntpv" path="res://art/popups/Sticky notes_.png" id="22_8u1y8"]
+[ext_resource type="FontFile" uid="uid://bfh134b1odp46" path="res://fonts/Anton-Regular.ttf" id="23_2gf3n"]
+[ext_resource type="Script" path="res://scripts/load_scene.gd" id="24_h7p8q"]
+[ext_resource type="Resource" uid="uid://dbcm6x8ysa1h7" path="res://conversations/wiggles/start.tres" id="26_dotap"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oseuf"]
 atlas = ExtResource("4_nn4s1")
@@ -44,7 +65,16 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tk83e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_42tj8"]
+
 [node name="Candidate" type="Node2D"]
+
+[node name="Office" type="Sprite2D" parent="."]
+position = Vector2(688.33, 541.25)
+scale = Vector2(0.532959, 0.532959)
+texture = ExtResource("1_ymsdq")
 
 [node name="White" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.278431)
@@ -70,3 +100,250 @@ speed_scale = 0.0
 position = Vector2(690, 540)
 scale = Vector2(0.53418, 0.53418)
 texture = ExtResource("11_xpg6y")
+
+[node name="Decide" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(674, 564)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("16_yqhbi")
+
+[node name="V1" type="Sprite2D" parent="Decide"]
+position = Vector2(-363.333, 71.6666)
+texture = ExtResource("13_ekrty")
+
+[node name="V2" type="Sprite2D" parent="Decide"]
+position = Vector2(-376.667, -178.333)
+texture = ExtResource("14_p7a3t")
+
+[node name="V3" type="Sprite2D" parent="Decide"]
+position = Vector2(-363.333, -431.667)
+texture = ExtResource("15_8yln6")
+
+[node name="X1" type="Sprite2D" parent="Decide"]
+position = Vector2(48.3333, -410)
+texture = ExtResource("16_yswa6")
+
+[node name="X2" type="Sprite2D" parent="Decide"]
+position = Vector2(111.667, -111.667)
+texture = ExtResource("17_re5d4")
+
+[node name="X3" type="Sprite2D" parent="Decide"]
+position = Vector2(80, 146.667)
+texture = ExtResource("18_dau62")
+
+[node name="Stamps" type="Sprite2D" parent="Decide"]
+position = Vector2(46.6667, 133.333)
+texture = ExtResource("19_xjlh2")
+
+[node name="Approved" type="Sprite2D" parent="Decide"]
+position = Vector2(-93.3333, 10)
+texture = ExtResource("20_afi4w")
+
+[node name="Denied" type="Sprite2D" parent="Decide"]
+position = Vector2(-56.6666, -8.33334)
+texture = ExtResource("21_poyov")
+
+[node name="StickyNotes" type="Sprite2D" parent="Decide"]
+texture = ExtResource("22_8u1y8")
+
+[node name="Button3" type="Button" parent="Decide/StickyNotes"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2442.67
+offset_top = -1794.0
+offset_right = -1876.67
+offset_bottom = -1340.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.158002
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 0, 0.521569, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0.521569, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("23_2gf3n")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tk83e")
+text = "Wiggles:
+Water fountain
+1000$"
+flat = true
+script = ExtResource("24_h7p8q")
+scene_path = "res://scenes/office.tscn"
+
+[node name="Button4" type="Button" parent="Decide/StickyNotes"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -929.333
+offset_top = -1712.33
+offset_right = -363.333
+offset_bottom = -1258.33
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.282851
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 0, 0.521569, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0.521569, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("23_2gf3n")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tk83e")
+text = "Current 
+Funds:
+50000$"
+flat = true
+script = ExtResource("24_h7p8q")
+scene_path = "res://scenes/office.tscn"
+
+[node name="Conversation" type="Node2D" parent="." node_paths=PackedStringArray("question_labels", "answer_label", "decision")]
+script = ExtResource("13_g5q27")
+conversation_start = ExtResource("26_dotap")
+question_labels = [NodePath("Questions/Question1"), NodePath("Questions/Question2"), NodePath("Questions/Question3")]
+answer_label = NodePath("Response")
+decision = NodePath("Button")
+
+[node name="Questions" type="Node2D" parent="Conversation"]
+
+[node name="Question1" type="Sprite2D" parent="Conversation/Questions" node_paths=PackedStringArray("label", "conversation")]
+position = Vector2(492, 849)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("12_4lspu")
+script = ExtResource("15_yc3l3")
+label = NodePath("Label")
+conversation = NodePath("../..")
+
+[node name="Label" type="Label" parent="Conversation/Questions/Question1"]
+offset_left = -782.0
+offset_top = -188.0
+offset_right = 763.0
+offset_bottom = 98.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "Tell me about yourself"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Button" type="Button" parent="Conversation/Questions/Question1"]
+offset_left = -857.0
+offset_top = -265.0
+offset_right = 860.0
+offset_bottom = 285.0
+focus_mode = 0
+flat = true
+
+[node name="Question2" type="Sprite2D" parent="Conversation/Questions" node_paths=PackedStringArray("label", "conversation")]
+position = Vector2(548, 528)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("13_xwgis")
+script = ExtResource("15_yc3l3")
+label = NodePath("Label2")
+conversation = NodePath("../..")
+id = 1
+
+[node name="Label2" type="Label" parent="Conversation/Questions/Question2"]
+offset_left = -800.0
+offset_top = -173.333
+offset_right = 745.0
+offset_bottom = 112.667
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "Tell me about your project"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Button2" type="Button" parent="Conversation/Questions/Question2"]
+offset_left = -947.0
+offset_top = -280.0
+offset_right = 946.0
+offset_bottom = 212.0
+focus_mode = 0
+flat = true
+
+[node name="Question3" type="Sprite2D" parent="Conversation/Questions" node_paths=PackedStringArray("label", "conversation")]
+position = Vector2(594, 227)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("14_ufvm5")
+script = ExtResource("15_yc3l3")
+label = NodePath("Label3")
+conversation = NodePath("../..")
+id = 2
+
+[node name="Label3" type="Label" parent="Conversation/Questions/Question3"]
+offset_left = -768.333
+offset_top = -181.667
+offset_right = 776.667
+offset_bottom = 104.333
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "Tell me what do you need"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Button3" type="Button" parent="Conversation/Questions/Question3"]
+offset_left = -1008.0
+offset_top = -248.0
+offset_right = 1028.0
+offset_bottom = 212.0
+focus_mode = 0
+flat = true
+
+[node name="Response" type="Sprite2D" parent="Conversation" node_paths=PackedStringArray("label")]
+position = Vector2(717, 470)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("15_7m65f")
+script = ExtResource("15_yc3l3")
+label = NodePath("Label4")
+
+[node name="Label4" type="Label" parent="Conversation/Response"]
+offset_left = -845.0
+offset_top = -309.0
+offset_right = 756.0
+offset_bottom = 77.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "Wiggles: So and so and so!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Button" type="Button" parent="Conversation/Response"]
+offset_left = 488.75
+offset_top = 537.5
+offset_right = 653.75
+offset_bottom = 613.5
+scale = Vector2(2, 2)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_42tj8")
+text = "Next"
+
+[node name="Button4" type="Button" parent="Conversation/Response"]
+offset_left = -880.0
+offset_top = -381.0
+offset_right = 849.0
+offset_bottom = 139.0
+focus_mode = 0
+flat = true
+
+[node name="Button" type="Button" parent="Conversation"]
+offset_left = 1103.0
+offset_top = 875.0
+offset_right = 1369.0
+offset_bottom = 1029.0
+theme_override_font_sizes/font_size = 60
+text = "Decide"
+
+[connection signal="pressed" from="Conversation/Questions/Question1/Button" to="Conversation/Questions/Question1" method="set_response"]
+[connection signal="pressed" from="Conversation/Questions/Question2/Button2" to="Conversation/Questions/Question2" method="set_response"]
+[connection signal="pressed" from="Conversation/Questions/Question3/Button3" to="Conversation/Questions/Question3" method="set_response"]
+[connection signal="pressed" from="Conversation/Response/Button" to="Conversation" method="next"]
+[connection signal="pressed" from="Conversation/Response/Button4" to="Conversation" method="next"]
+[connection signal="pressed" from="Conversation/Button" to="Decide" method="show"]
+[connection signal="pressed" from="Conversation/Button" to="Conversation" method="hide"]
