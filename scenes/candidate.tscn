@@ -1,13 +1,19 @@
-[gd_scene load_steps=38 format=3 uid="uid://c1bffkg4xn8t7"]
+[gd_scene load_steps=44 format=3 uid="uid://c1bffkg4xn8t7"]
 
 [ext_resource type="Script" path="res://scripts/candidate.gd" id="1_4iqrw"]
 [ext_resource type="Texture2D" uid="uid://drxkrtb6f5vrc" path="res://art/office/Office.png" id="1_ymsdq"]
 [ext_resource type="Texture2D" uid="uid://btjfqtbh5hyfq" path="res://art/office/white.png" id="2_n5nqx"]
+[ext_resource type="Resource" uid="uid://bfvwm1pvvwrsl" path="res://conversations/glitter.tres" id="2_te1ui"]
 [ext_resource type="Texture2D" uid="uid://b5412c8ods55o" path="res://art/office/Chair.png" id="3_hp5ct"]
+[ext_resource type="Resource" uid="uid://dhjh3gor81d1m" path="res://conversations/fuzzy.tres" id="4_itlpo"]
 [ext_resource type="Texture2D" uid="uid://ct6joxc4cr0k5" path="res://art/candidates/Bear.png" id="4_nn4s1"]
 [ext_resource type="Texture2D" uid="uid://cxh5w05nk0ys" path="res://art/candidates/Bunny.png" id="5_fd1i0"]
+[ext_resource type="Resource" uid="uid://du8w3cs0u3uh8" path="res://conversations/whiskers.tres" id="5_lv8f0"]
+[ext_resource type="Resource" uid="uid://cg1mh3jj605f" path="res://conversations/hopper.tres" id="5_mlw8f"]
 [ext_resource type="Texture2D" uid="uid://clb3leg6afxps" path="res://art/candidates/Cat.png" id="6_12kot"]
+[ext_resource type="Resource" uid="uid://b0iocov77mido" path="res://conversations/sly.tres" id="6_avbau"]
 [ext_resource type="Texture2D" uid="uid://bajjbgqjf30sm" path="res://art/candidates/Dog.png" id="7_8huc7"]
+[ext_resource type="Resource" uid="uid://w0b0kh1omgry" path="res://conversations/stripes.tres" id="7_x2m15"]
 [ext_resource type="Texture2D" uid="uid://5g4ntk7i7krg" path="res://art/candidates/Fox.png" id="8_mdx8y"]
 [ext_resource type="Texture2D" uid="uid://dhngqohf0rqq7" path="res://art/candidates/Tiger.png" id="9_x152s"]
 [ext_resource type="Texture2D" uid="uid://ceaals06sfsub" path="res://art/candidates/Unicorn.png" id="10_o2ccx"]
@@ -72,7 +78,7 @@ animations = [{
 
 [node name="Candidate" type="Node2D" node_paths=PackedStringArray("animation", "conversation", "decide")]
 script = ExtResource("1_4iqrw")
-candidate_list = Array[Resource("res://conversations/cardidate_res.gd")]([ExtResource("27_jlejw")])
+candidate_list = Array[Resource("res://conversations/candidate_res.gd")]([ExtResource("27_jlejw"), ExtResource("2_te1ui"), ExtResource("4_itlpo"), ExtResource("5_lv8f0"), ExtResource("6_avbau"), ExtResource("7_x2m15"), ExtResource("5_mlw8f")])
 animation = NodePath("Node2D/Animal")
 conversation = NodePath("Conversation")
 decide = NodePath("Decide")
@@ -408,6 +414,7 @@ text = "Decide"
 
 [connection signal="pressed" from="Decide/Stamps/Approve" to="Decide" method="stamp" binds= [true]]
 [connection signal="pressed" from="Decide/Stamps/Deny" to="Decide" method="stamp" binds= [false]]
+[connection signal="pressed" from="Decide/Next" to="." method="start_next"]
 [connection signal="pressed" from="Conversation/Questions/Question1/Button" to="Conversation/Questions/Question1" method="set_response"]
 [connection signal="pressed" from="Conversation/Questions/Question2/Button2" to="Conversation/Questions/Question2" method="set_response"]
 [connection signal="pressed" from="Conversation/Questions/Question3/Button3" to="Conversation/Questions/Question3" method="set_response"]

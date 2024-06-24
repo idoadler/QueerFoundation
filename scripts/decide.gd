@@ -43,11 +43,14 @@ func stamp(approved_stamp:bool):
 		node.freeze()
 	stamps.hide()
 	if not approved_stamp:
+		target_project.state = CandidateRes.State.REJECTED
 		denied.show()
 	elif current_funds > target_project.required_funds:
 		current_funds -= target_project.required_funds
+		target_project.state = CandidateRes.State.FOUNDED
 		approved.show()
 	else:
+		target_project.state = CandidateRes.State.DELAYED
 		no_funds.show()
 	stamps.hide()
 	next.show()

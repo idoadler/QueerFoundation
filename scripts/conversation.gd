@@ -7,6 +7,7 @@ extends Node2D
 @export var decide:Decide
 
 var starting_conv:ConvRes
+var costumer_name:String
 var current_conv:ConvRes
 var answer_texts:PackedStringArray
 var answer_part: = -1
@@ -15,6 +16,10 @@ var answer_part: = -1
 func _ready():
 	reset()
 	decision.pressed.connect(start_decision)
+
+func init(candidate:CandidateRes):
+	starting_conv = candidate.first_conversation
+	costumer_name = candidate.costumer	
 	
 func start_decision():
 	reset()
@@ -67,7 +72,7 @@ func set_response(response):
 		current_conv = null
 
 func set_next_answer():
-	answer_label.label.text = answer_texts[answer_part]
+	answer_label.label.text = costumer_name + ": "+ answer_texts[answer_part]
 	answer_part += 1
 	if answer_part >= answer_texts.size():
 		answer_part = -1

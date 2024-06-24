@@ -6,5 +6,5 @@
 [resource]
 script = ExtResource("1_jm5bo")
 questions = Array[String](["How can we help you, what do you need?", "Please tell me about your project?", "Hey there, please tell me a bit about yourself."])
-answers = Array[String](["Wiggles: I need approval from the city and 5000$ for materials", "Wiggles: I want to have add a fountain at the city hall", "Hey there, my name is Wiggles"])
+answers = Array[String](["I need approval from the city and 5000$ for materials", "I want to have add a fountain at the city hall", "Hey there, my name is Wiggles"])
 goto = Array[ExtResource("1_jm5bo")]([null, null, ExtResource("1_gsdq4")])

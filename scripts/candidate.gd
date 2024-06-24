@@ -1,4 +1,7 @@
+class_name Candidate
 extends Node2D
+
+signal game_done
 
 @export var candidate_list:Array[CandidateRes]
 @export var animation:AnimatedSprite2D
@@ -19,6 +22,7 @@ func start_next():
 	if current < candidate_list.size():
 		await get_tree().create_timer(animation_delay).timeout
 		var candidate = candidate_list[current]
+		candidate.state = CandidateRes.State.WAITING
 		animation.frame = candidate.frame
 		animation.show()
 		conversation.starting_conv = candidate.first_conversation
@@ -27,3 +31,6 @@ func start_next():
 		await get_tree().create_timer(text_delay).timeout
 		conversation.start()
 		current += 1
+	else:
+		hide()
+		game_done.emit()

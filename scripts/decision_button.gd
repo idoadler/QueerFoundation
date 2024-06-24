@@ -13,11 +13,11 @@ func _ready():
 	reset()
 
 func reset():
-	frozen = false
-	is_set = false
 	button_pressed = false
 	yes_icon.visible = false
 	no_icon.visible = false
+	frozen = false
+	is_set = false
 	
 func freeze():
 	frozen = true
