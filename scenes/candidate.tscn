@@ -1,5 +1,6 @@
-[gd_scene load_steps=36 format=3 uid="uid://c1bffkg4xn8t7"]
+[gd_scene load_steps=38 format=3 uid="uid://c1bffkg4xn8t7"]
 
+[ext_resource type="Script" path="res://scripts/candidate.gd" id="1_4iqrw"]
 [ext_resource type="Texture2D" uid="uid://drxkrtb6f5vrc" path="res://art/office/Office.png" id="1_ymsdq"]
 [ext_resource type="Texture2D" uid="uid://btjfqtbh5hyfq" path="res://art/office/white.png" id="2_n5nqx"]
 [ext_resource type="Texture2D" uid="uid://b5412c8ods55o" path="res://art/office/Chair.png" id="3_hp5ct"]
@@ -14,7 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://01oltalnm3iv" path="res://art/popups/Question1.png" id="12_4lspu"]
 [ext_resource type="Texture2D" uid="uid://b2477yat8l43s" path="res://art/popups/V1.png" id="13_ekrty"]
 [ext_resource type="Script" path="res://scripts/conversation.gd" id="13_g5q27"]
+[ext_resource type="Script" path="res://scripts/decide.gd" id="13_k5dt8"]
 [ext_resource type="Texture2D" uid="uid://y137xa0eesyv" path="res://art/popups/Question2.png" id="13_xwgis"]
+[ext_resource type="Script" path="res://scripts/decision_button.gd" id="14_1ybhj"]
 [ext_resource type="Texture2D" uid="uid://bhy6ypwydxnxr" path="res://art/popups/V2.png" id="14_p7a3t"]
 [ext_resource type="Texture2D" uid="uid://qe48tvlymery" path="res://art/popups/Question3.png" id="14_ufvm5"]
 [ext_resource type="Texture2D" uid="uid://dkgo47lmwnq6d" path="res://art/popups/Response.png" id="15_7m65f"]
@@ -29,8 +32,8 @@
 [ext_resource type="Texture2D" uid="uid://dsqpp0tou6lya" path="res://art/popups/Denied.png" id="21_poyov"]
 [ext_resource type="Texture2D" uid="uid://wsf5rletntpv" path="res://art/popups/Sticky notes_.png" id="22_8u1y8"]
 [ext_resource type="FontFile" uid="uid://bfh134b1odp46" path="res://fonts/Anton-Regular.ttf" id="23_2gf3n"]
-[ext_resource type="Script" path="res://scripts/load_scene.gd" id="24_h7p8q"]
-[ext_resource type="Resource" uid="uid://dbcm6x8ysa1h7" path="res://conversations/wiggles/start.tres" id="26_dotap"]
+[ext_resource type="Texture2D" uid="uid://cikvyr2d7vasj" path="res://art/popups/Funds.png" id="24_u5elw"]
+[ext_resource type="Resource" uid="uid://bvp6jtstyqfr" path="res://conversations/wiggles.tres" id="27_jlejw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oseuf"]
 atlas = ExtResource("4_nn4s1")
@@ -65,11 +68,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tk83e"]
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_42tj8"]
 
-[node name="Candidate" type="Node2D"]
+[node name="Candidate" type="Node2D" node_paths=PackedStringArray("animation", "conversation", "decide")]
+script = ExtResource("1_4iqrw")
+candidate_list = Array[Resource("res://conversations/cardidate_res.gd")]([ExtResource("27_jlejw")])
+animation = NodePath("Node2D/Animal")
+conversation = NodePath("Conversation")
+decide = NodePath("Decide")
 
 [node name="Office" type="Sprite2D" parent="."]
 position = Vector2(688.33, 541.25)
@@ -101,39 +107,100 @@ position = Vector2(690, 540)
 scale = Vector2(0.53418, 0.53418)
 texture = ExtResource("11_xpg6y")
 
-[node name="Decide" type="Sprite2D" parent="."]
-visible = false
+[node name="Decide" type="Sprite2D" parent="." node_paths=PackedStringArray("note_left", "note_right", "decision_buttons", "stamps", "approved", "denied", "no_funds", "next")]
 position = Vector2(674, 564)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("16_yqhbi")
+script = ExtResource("13_k5dt8")
+note_left = NodePath("StickyNotes/NoteLeft")
+note_right = NodePath("StickyNotes/NoteRight")
+decision_buttons = [NodePath("Button"), NodePath("Button2"), NodePath("Button3")]
+stamps = NodePath("Stamps")
+approved = NodePath("Approved")
+denied = NodePath("Denied")
+no_funds = NodePath("NoFunds")
+next = NodePath("Next")
 
-[node name="V1" type="Sprite2D" parent="Decide"]
-position = Vector2(-363.333, 71.6666)
+[node name="Button" type="Button" parent="Decide" node_paths=PackedStringArray("yes_icon", "no_icon")]
+offset_left = -561.667
+offset_right = 520.333
+offset_bottom = 245.0
+focus_mode = 0
+toggle_mode = true
+flat = true
+script = ExtResource("14_1ybhj")
+yes_icon = NodePath("V1")
+no_icon = NodePath("X3")
+
+[node name="V1" type="Sprite2D" parent="Decide/Button"]
+position = Vector2(198.334, 71.6666)
 texture = ExtResource("13_ekrty")
 
-[node name="V2" type="Sprite2D" parent="Decide"]
-position = Vector2(-376.667, -178.333)
+[node name="X3" type="Sprite2D" parent="Decide/Button"]
+position = Vector2(641.667, 146.667)
+texture = ExtResource("18_dau62")
+
+[node name="Button2" type="Button" parent="Decide" node_paths=PackedStringArray("yes_icon", "no_icon")]
+offset_left = -546.667
+offset_top = -235.0
+offset_right = 535.333
+offset_bottom = 10.0
+focus_mode = 0
+toggle_mode = true
+flat = true
+script = ExtResource("14_1ybhj")
+yes_icon = NodePath("V2")
+no_icon = NodePath("X2")
+
+[node name="V2" type="Sprite2D" parent="Decide/Button2"]
+position = Vector2(170, 56.6669)
 texture = ExtResource("14_p7a3t")
 
-[node name="V3" type="Sprite2D" parent="Decide"]
-position = Vector2(-363.333, -431.667)
-texture = ExtResource("15_8yln6")
-
-[node name="X1" type="Sprite2D" parent="Decide"]
-position = Vector2(48.3333, -410)
-texture = ExtResource("16_yswa6")
-
-[node name="X2" type="Sprite2D" parent="Decide"]
-position = Vector2(111.667, -111.667)
+[node name="X2" type="Sprite2D" parent="Decide/Button2"]
+position = Vector2(658.334, 123.333)
 texture = ExtResource("17_re5d4")
 
-[node name="X3" type="Sprite2D" parent="Decide"]
-position = Vector2(80, 146.667)
-texture = ExtResource("18_dau62")
+[node name="Button3" type="Button" parent="Decide" node_paths=PackedStringArray("yes_icon", "no_icon")]
+offset_left = -556.667
+offset_top = -470.0
+offset_right = 525.333
+offset_bottom = -225.0
+focus_mode = 0
+toggle_mode = true
+flat = true
+script = ExtResource("14_1ybhj")
+yes_icon = NodePath("V3")
+no_icon = NodePath("X1")
+
+[node name="V3" type="Sprite2D" parent="Decide/Button3"]
+position = Vector2(193.334, 38.333)
+texture = ExtResource("15_8yln6")
+
+[node name="X1" type="Sprite2D" parent="Decide/Button3"]
+position = Vector2(605, 60)
+texture = ExtResource("16_yswa6")
 
 [node name="Stamps" type="Sprite2D" parent="Decide"]
 position = Vector2(46.6667, 133.333)
 texture = ExtResource("19_xjlh2")
+
+[node name="Approve" type="Button" parent="Decide/Stamps"]
+offset_left = -1142.0
+offset_top = -160.0
+offset_right = -582.0
+offset_bottom = 505.0
+focus_mode = 0
+toggle_mode = true
+flat = true
+
+[node name="Deny" type="Button" parent="Decide/Stamps"]
+offset_left = 613.333
+offset_top = -250.0
+offset_right = 1173.33
+offset_bottom = 415.0
+focus_mode = 0
+toggle_mode = true
+flat = true
 
 [node name="Approved" type="Sprite2D" parent="Decide"]
 position = Vector2(-93.3333, 10)
@@ -143,10 +210,14 @@ texture = ExtResource("20_afi4w")
 position = Vector2(-56.6666, -8.33334)
 texture = ExtResource("21_poyov")
 
+[node name="NoFunds" type="Sprite2D" parent="Decide"]
+position = Vector2(-56.6666, -8.33334)
+texture = ExtResource("24_u5elw")
+
 [node name="StickyNotes" type="Sprite2D" parent="Decide"]
 texture = ExtResource("22_8u1y8")
 
-[node name="Button3" type="Button" parent="Decide/StickyNotes"]
+[node name="NoteLeft" type="Label" parent="Decide/StickyNotes"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -160,20 +231,13 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.158002
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 0, 0.521569, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0.521569, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("23_2gf3n")
 theme_override_font_sizes/font_size = 80
-theme_override_styles/focus = SubResource("StyleBoxEmpty_tk83e")
-text = "Wiggles:
-Water fountain
-1000$"
-flat = true
-script = ExtResource("24_h7p8q")
-scene_path = "res://scenes/office.tscn"
+text = "YYY"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Button4" type="Button" parent="Decide/StickyNotes"]
+[node name="NoteRight" type="Label" parent="Decide/StickyNotes"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -187,25 +251,27 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.282851
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 0, 0.521569, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0.521569, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("23_2gf3n")
 theme_override_font_sizes/font_size = 80
-theme_override_styles/focus = SubResource("StyleBoxEmpty_tk83e")
-text = "Current 
-Funds:
-50000$"
-flat = true
-script = ExtResource("24_h7p8q")
-scene_path = "res://scenes/office.tscn"
+text = "XXX"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Conversation" type="Node2D" parent="." node_paths=PackedStringArray("question_labels", "answer_label", "decision")]
+[node name="Next" type="Button" parent="Decide"]
+offset_left = 878.0
+offset_top = 527.0
+offset_right = 1195.0
+offset_bottom = 727.0
+theme_override_font_sizes/font_size = 80
+text = "Next"
+
+[node name="Conversation" type="Node2D" parent="." node_paths=PackedStringArray("question_labels", "answer_label", "decision", "decide")]
+visible = false
 script = ExtResource("13_g5q27")
-conversation_start = ExtResource("26_dotap")
 question_labels = [NodePath("Questions/Question1"), NodePath("Questions/Question2"), NodePath("Questions/Question3")]
 answer_label = NodePath("Response")
-decision = NodePath("Button")
+decision = NodePath("MakeDecision")
+decide = NodePath("../Decide")
 
 [node name="Questions" type="Node2D" parent="Conversation"]
 
@@ -332,7 +398,7 @@ offset_bottom = 139.0
 focus_mode = 0
 flat = true
 
-[node name="Button" type="Button" parent="Conversation"]
+[node name="MakeDecision" type="Button" parent="Conversation"]
 offset_left = 1103.0
 offset_top = 875.0
 offset_right = 1369.0
@@ -340,10 +406,10 @@ offset_bottom = 1029.0
 theme_override_font_sizes/font_size = 60
 text = "Decide"
 
+[connection signal="pressed" from="Decide/Stamps/Approve" to="Decide" method="stamp" binds= [true]]
+[connection signal="pressed" from="Decide/Stamps/Deny" to="Decide" method="stamp" binds= [false]]
 [connection signal="pressed" from="Conversation/Questions/Question1/Button" to="Conversation/Questions/Question1" method="set_response"]
 [connection signal="pressed" from="Conversation/Questions/Question2/Button2" to="Conversation/Questions/Question2" method="set_response"]
 [connection signal="pressed" from="Conversation/Questions/Question3/Button3" to="Conversation/Questions/Question3" method="set_response"]
 [connection signal="pressed" from="Conversation/Response/Button" to="Conversation" method="next"]
 [connection signal="pressed" from="Conversation/Response/Button4" to="Conversation" method="next"]
-[connection signal="pressed" from="Conversation/Button" to="Decide" method="show"]
-[connection signal="pressed" from="Conversation/Button" to="Conversation" method="hide"]

@@ -17,10 +17,6 @@ scale = Vector2(0.532959, 0.532959)
 texture = ExtResource("1_ajm7o")
 
 [node name="Candidate" parent="." instance=ExtResource("2_kjy25")]
-visible = false
-
-[node name="Animal" parent="Candidate/Node2D" index="1"]
-visible = false
 
 [node name="Screen" type="Sprite2D" parent="."]
 visible = false
@@ -105,26 +101,9 @@ autostart = true
 wait_time = 0.5
 one_shot = true
 
-[node name="TimerCandidate" type="Timer" parent="."]
-wait_time = 0.3
-one_shot = true
-
-[node name="TimerConversation" type="Timer" parent="TimerCandidate"]
-wait_time = 0.6
-one_shot = true
-
-[connection signal="ready" from="Candidate" to="Candidate" method="hide"]
-[connection signal="ready" from="Candidate" to="Candidate/Node2D/Animal" method="hide"]
 [connection signal="ready" from="Screen" to="Screen" method="set_visible" binds= [false]]
-[connection signal="scroll_done" from="SkippableText" to="Candidate" method="show"]
+[connection signal="scroll_done" from="SkippableText" to="Candidate" method="start_next"]
 [connection signal="scroll_done" from="SkippableText" to="Screen" method="hide"]
-[connection signal="scroll_done" from="SkippableText" to="TimerCandidate" method="start"]
-[connection signal="scroll_done" from="SkippableText" to="Candidate/Node2D/Animal" method="set_frame" binds= [0]]
 [connection signal="timeout" from="TimerShowScreen" to="TimerShowScreen/TimerStartText" method="start"]
 [connection signal="timeout" from="TimerShowScreen" to="Screen" method="set_visible" binds= [true]]
 [connection signal="timeout" from="TimerShowScreen/TimerStartText" to="SkippableText" method="activate"]
-[connection signal="timeout" from="TimerCandidate" to="TimerCandidate/TimerConversation" method="start"]
-[connection signal="timeout" from="TimerCandidate" to="Candidate/Node2D/Animal" method="set_visible" binds= [true]]
-[connection signal="timeout" from="TimerCandidate/TimerConversation" to="Candidate/Conversation" method="start"]
-
-[editable path="Candidate"]

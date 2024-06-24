@@ -1,11 +1,12 @@
 class_name Conversation
 extends Node2D
 
-@export var conversation_start:ConvRes
 @export var question_labels:Array[LabledImage]
 @export var answer_label:LabledImage
 @export var decision:Button
+@export var decide:Decide
 
+var starting_conv:ConvRes
 var current_conv:ConvRes
 var answer_texts:PackedStringArray
 var answer_part: = -1
@@ -13,23 +14,32 @@ var answer_part: = -1
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	reset()
+	decision.pressed.connect(start_decision)
+	
+func start_decision():
+	reset()
+	decide.show()
 	
 func start():
 	reset()
+	show()
 	next()
 	decision.visible = false
 	
 func reset():
+	hide()
+	# TODO: SET CANDIDATE FRAME
 	decision.visible = false
 	for i in question_labels.size():
 		question_labels[i].visible = false
 	answer_label.visible = false
+	current_conv = null
 	
 func next():
 	if answer_part < 0:
 		if current_conv == null:
 			decision.visible = true
-			current_conv = conversation_start
+			current_conv = starting_conv
 		activate()
 	else:
 		set_next_answer()
